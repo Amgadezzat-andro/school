@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
-@section('title','Admin Dashboard')
-
+@section('title','Parent Dashboard')
 @section('content')
 
 <div class="content-wrapper">
