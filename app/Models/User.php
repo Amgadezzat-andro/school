@@ -3,10 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Request;
 use Laravel\Sanctum\HasApiTokens;
+
 
 class User extends Authenticatable
 {
@@ -54,11 +57,22 @@ class User extends Authenticatable
 
     static public function getAdmin()
     {
-        return self::select('users.*')
-                    ->where('user_type', '=', 1)
-                    ->where('is_delete', '=', 0)
-                    ->orderBy('id', 'desc')
-                    ->get();
+        $return = self::select('users.*')
+            ->where('user_type', '=', 1)
+            ->where('is_delete', '=', 0);
+        if (!empty(Request::get('name'))) {
+            $return = $return->where('name', 'like', '%' . Request::get('name') . '%');
+        }
+        if (!empty(Request::get('email'))) {
+            $return = $return->where('email', 'like', '%' . Request::get('email') . '%');
+        }
+        if (!empty(Request::get('date'))) {
+            $return = $return->whereDate('created_at', '=', Request::get('date'));
+        }
+        $return = $return->orderBy('id', 'desc')
+            ->paginate(2);
+
+        return $return;
     }
     static public function getOneAdmin($adminID)
     {
