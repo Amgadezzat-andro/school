@@ -98,10 +98,11 @@ class AuthController extends Controller
     {
         if ($request->newPassword == $request->confirmPassword) {
             $user = User::getTokenSingle($token);
-           
+
             $user->password = Hash::make($request->newPassword);
             $user->remember_token = Str::random(30);
             $user->save();
+
             return redirect('login')->with('success', 'Password Successfully Reset');
 
         } else {
@@ -109,4 +110,7 @@ class AuthController extends Controller
         }
 
     }
+
+
+    
 }

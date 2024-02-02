@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -15,34 +16,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* Route::get('/', function () {
-    return view('welcome');
-}); */
 
-// Open Login Page & Check which Role
+
 Route::get('/', [AuthController::class, 'login']);
 Route::get('login', [AuthController::class, 'login']);
-// Whenever Click Login
+
 Route::post('login', [AuthController::class, 'AuthLogin']);
-// Whenever Click Logout
+
 Route::get('logout', [AuthController::class, 'logout']);
 
 Route::get('forget-password', [AuthController::class, 'forgetpassword']);
 Route::post('forget-password', [AuthController::class, 'PostForgetPassword']);
 
-Route::get('reset/{token}',[AuthController::class, 'reset']);
-Route::post('reset/{token}',[AuthController::class, 'PostReset']);
+Route::get('reset/{token}', [AuthController::class, 'reset']);
+Route::post('reset/{token}', [AuthController::class, 'PostReset']);
 
-// MiddleWares Groups
 
 Route::group(['middleware' => 'admin'], function () {
 
+    //  Show Admin Dashboard
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
-
-    Route::get('admin/admin/list', function () {
-        return view('admin.admin.list');
-    });
-
+    // List Admins with Actions
+    Route::get('admin/admin/list', [AdminController::class, 'list']);
+    // Add New Admin view - Add Admin
+    Route::get('admin/admin/add', [AdminController::class, 'add']);
+    Route::post('admin/admin/add', [AdminController::class, 'PostAdd']);
+    // Edit Admin view - Edit Admin
+    Route::get('admin/admin/edit/{id}', [AdminController::class, 'edit']);
+    Route::post('admin/admin/edit/{id}', [AdminController::class, 'PostEdit']);
+    // Delete Admin
+    Route::get('admin/admin/delete/{id}', [AdminController::class, 'delete']);
 
 });
 
