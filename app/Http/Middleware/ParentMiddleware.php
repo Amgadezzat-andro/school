@@ -18,7 +18,7 @@ class ParentMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            if (Auth::user()->user_type == 4) {
+            if (Auth::user()->user_type == 4 && Auth::user()->is_delete == 0) {
                 return $next($request);
             } else {
                 Auth::logout();

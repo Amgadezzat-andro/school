@@ -34,12 +34,13 @@
                                     <div class="form-group">
                                         <label>Name</label>
                                         <input type="name" class="form-control" name="name"
-                                            placeholder="Enter Admin's Name" required>
+                                            placeholder="Enter Admin's Name" value="{{old('name')}}" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Email address</label>
                                         <input type="email" class="form-control" name="email"
-                                            placeholder="Enter Admin's email" required>
+                                            placeholder="Enter Admin's email"  value="{{old('email')}}" required>
+                                        <div style="color: red" >{{ $errors->first('email') }}</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>

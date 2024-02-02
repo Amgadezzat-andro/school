@@ -18,7 +18,7 @@ class TeacherMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            if (Auth::user()->user_type == 2) {
+            if (Auth::user()->user_type == 2 && Auth::user()->is_delete == 0) {
                 return $next($request);
             } else {
                 Auth::logout();

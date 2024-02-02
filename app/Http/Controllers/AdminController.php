@@ -19,6 +19,9 @@ class AdminController extends Controller
     }
     public function PostAdd(Request $request)
     {
+        request()->validate([
+            'email' => 'required|email|unique:users'
+        ]);
         $user = new User();
         $user->name = trim($request->name);
         $user->email = trim($request->email);
@@ -41,6 +44,9 @@ class AdminController extends Controller
     }
     public function PostEdit($id, Request $request)
     {
+        request()->validate([
+            'email' => 'required|email|unique:users,email,'.$id
+        ]);
         $admin = User::getOneAdmin($id);
         $admin->name = trim($request->name);
         $admin->email = trim($request->email);
