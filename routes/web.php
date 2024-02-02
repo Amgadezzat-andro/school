@@ -21,12 +21,17 @@ use Illuminate\Support\Facades\Route;
 
 // Open Login Page & Check which Role
 Route::get('/', [AuthController::class, 'login']);
+Route::get('login', [AuthController::class, 'login']);
 // Whenever Click Login
 Route::post('login', [AuthController::class, 'AuthLogin']);
 // Whenever Click Logout
 Route::get('logout', [AuthController::class, 'logout']);
 
+Route::get('forget-password', [AuthController::class, 'forgetpassword']);
+Route::post('forget-password', [AuthController::class, 'PostForgetPassword']);
 
+Route::get('reset/{token}',[AuthController::class, 'reset']);
+Route::post('reset/{token}',[AuthController::class, 'PostReset']);
 
 // MiddleWares Groups
 

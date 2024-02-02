@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Log in</title>
+    <title>Reset Password</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -22,24 +22,25 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="" class="h1"><b>Log in</b></a>
+                <a href="{{ url('reset') . $user['remember_token'] }}" class="h1"><b>Reset Password</b></a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
-
+                {{-- <p class="login-box-msg">Sign in to start your session</p> --}}
                 @include('_message')
-                <form action="{{ url('login') }}" method="post">
+                <form action="" method="post">
                     {{ @csrf_field() }}
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" name="email" required>
+                        <input type="password" class="form-control" placeholder="New Password" name="newPassword"
+                            required>
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                                <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" name="password" required>
+                        <input type="password" class="form-control" placeholder="Confirm Password"
+                            name="confirmPassword" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -47,27 +48,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember" name="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
                         <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
 
-
-
-                <p class="mb-1">
-                    <a href="{{ url('forget-password') }}">I forgot my password</a>
-                </p>
 
             </div>
             <!-- /.card-body -->
