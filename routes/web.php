@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClassController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,17 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
+// AUTH
 Route::get('/', [AuthController::class, 'login']);
 Route::get('login', [AuthController::class, 'login']);
-
 Route::post('login', [AuthController::class, 'AuthLogin']);
-
 Route::get('logout', [AuthController::class, 'logout']);
-
 Route::get('forget-password', [AuthController::class, 'forgetpassword']);
 Route::post('forget-password', [AuthController::class, 'PostForgetPassword']);
-
 Route::get('reset/{token}', [AuthController::class, 'reset']);
 Route::post('reset/{token}', [AuthController::class, 'PostReset']);
 
@@ -36,6 +33,7 @@ Route::group(['middleware' => 'admin'], function () {
 
     //  Show Admin Dashboard
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+
     // List Admins with Actions
     Route::get('admin/admin/list', [AdminController::class, 'list']);
     // Add New Admin view - Add Admin
@@ -46,6 +44,19 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/admin/edit/{id}', [AdminController::class, 'PostEdit']);
     // Delete Admin
     Route::get('admin/admin/delete/{id}', [AdminController::class, 'delete']);
+
+    //List Class
+    Route::get('admin/class/list', [ClassController::class, 'list']);
+    // Add New Class view - Add Class
+    Route::get('admin/class/add', [ClassController::class, 'add']);
+    Route::post('admin/class/add', [ClassController::class, 'PostAdd']);
+    // Edit Class view - Edit Class
+    Route::get('admin/class/edit/{id}', [ClassController::class, 'edit']);
+    Route::post('admin/class/edit/{id}', [ClassController::class, 'PostEdit']);
+    // Delete Class
+    Route::get('admin/class/delete/{id}', [ClassController::class, 'delete']);
+
+
 
 });
 
