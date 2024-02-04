@@ -47,6 +47,7 @@ class AdminController extends Controller
         request()->validate([
             'email' => 'required|email|unique:users,email,'.$id
         ]);
+        //Hello from admin 2
         $admin = User::getOneAdmin($id);
         $admin->name = trim($request->name);
         $admin->email = trim($request->email);
