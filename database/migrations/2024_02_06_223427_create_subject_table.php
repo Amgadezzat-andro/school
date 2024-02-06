@@ -12,9 +12,10 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('class', function (Blueprint $table) {
+        Schema::create('subject', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
+            $table->tinyInteger('type');
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('is_delete')->default(0);
             $table->integer('created_by');
@@ -29,6 +30,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('class');
+        Schema::dropIfExists('subject');
     }
 };
