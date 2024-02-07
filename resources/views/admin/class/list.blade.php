@@ -99,9 +99,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($classes as $class)
+                            @foreach ($classes as $key => $class)
                                 <tr>
-                                    <td>{{ $class->id }}</td>
+                                    <td>{{ $key + 1 }}</td>
                                     <td>{{ $class->name }}</td>
                                     <td>
                                         @if ($class->status == 0)

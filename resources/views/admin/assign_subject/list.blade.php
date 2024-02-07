@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'SMS-Subject List')
+@section('title', 'SMS-Assign Subject List')
 @section('content')
 
     <!-- Content Wrapper. Contains page content -->
@@ -15,10 +15,10 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Subject List Total : {{ $subjects->total() }} Subjects</h1>
+                            <h1>Assign Subject List Total : {{ $subjects->total() }} Subjects Assigned</h1>
                         </div>
                         <div class="col-sm-6" style="text-align: right;">
-                            <a href="{{ url('admin/subject/add') }}" class="btn btn-primary">Add New Subject</a>
+                            <a href="{{ url('admin/assign_subject/add') }}" class="btn btn-primary">Assign Subject</a>
                         </div>
 
                     </div>
@@ -33,14 +33,21 @@
                 <!-- form start -->
                 <form action="" method="get">
                     <div class="card-header">
-                        <h3 class="card-title">Search Subject</h3>
+                        <h3 class="card-title">Search Assigned Subjects</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-md-3">
-                                <label>Name</label>
-                                <input type="text" class="form-control" name="name" placeholder="Enter Subject's Name"
-                                    value="{{ old('name', Request::get('name')) }}">
+                                <label>Subject Name</label>
+                                <input type="text" class="form-control" name="subject_name"
+                                    placeholder="Enter Subject's Name"
+                                    value="{{ old('name', Request::get('subject_name')) }}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Class Name</label>
+                                <input type="text" class="form-control" name="class_name"
+                                    placeholder="Enter Subject's Class Name"
+                                    value="{{ old('name', Request::get('class_name')) }}">
                             </div>
                             <div class="form-group col-md-3">
                                 <label>Status</label>
@@ -49,16 +56,6 @@
                                     <option value='1.0' {{ Request::get('status') == '1.0' ? 'selected' : '' }}>Active
                                     </option>
                                     <option value='0.0' {{ Request::get('status') == '0.0' ? 'selected' : '' }}>InActive
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label>Type</label>
-                                <select name="type" class="form-control">
-                                    <option value="" selected>All</option>
-                                    <option value = '1.0' {{ Request::get('type') == '1.0' ? 'selected' : '' }}>Practical
-                                    </option>
-                                    <option value = '0.0' {{ Request::get('type') == '0.0' ? 'selected' : '' }}>Theory
                                     </option>
                                 </select>
                             </div>
@@ -74,7 +71,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <button class="btn btn-primary" type="submit" style="margin-top: 30px">Search</button>
-                                <a href="{{ url('admin/subject/list') }}" class="btn btn-success"
+                                <a href="{{ url('admin/assign_subject/list') }}" class="btn btn-success"
                                     style="margin-top: 30px">Clear</a>
 
                             </div>
@@ -101,10 +98,10 @@
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Name</th>
-                                <th>type</th>
-                                <th>Status</th>
+                                <th>Subject</th>
+                                <th>Class</th>
                                 <th>Created By</th>
+                                <th>Status</th>
                                 <th>Created At</th>
                                 <th>Actions</th>
                             </tr>
@@ -112,15 +109,10 @@
                         <tbody>
                             @foreach ($subjects as $key => $subject)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
-                                    <td>{{ $subject->name }}</td>
-                                    <td>
-                                        @if ($subject->type == 0)
-                                            Theory
-                                        @else
-                                            Practical
-                                        @endif
-                                    </td>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $subject->subject_name }}</td>
+                                    <td>{{ $subject->class_name }}</td>
+                                    <td>{{ $subject->created_by }}</td>
                                     <td>
                                         @if ($subject->status == 0)
                                             InActive
@@ -129,12 +121,11 @@
                                         @endif
 
                                     </td>
-                                    <td>{{ $subject->created_by }}</td>
                                     <td>{{ date('d-m-Y', strtotime($subject->created_at)) }}</td>
                                     <td>
-                                        <a href="{{ url('admin/subject/edit/' . $subject->id) }}"
+                                        <a href="{{ url('admin/assign_subject/edit/' . $subject->id) }}"
                                             class="btn btn-primary">Edit</a>
-                                        <a href="{{ url('admin/subject/delete/' . $subject->id) }}"
+                                        <a href="{{ url('admin/assign_subject/delete/' . $subject->id) }}"
                                             class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>

@@ -88,9 +88,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($admins as $admin)
+                            @foreach ($admins as $key => $admin)
                                 <tr>
-                                    <td>{{ $admin->id }}</td>
+                                    <td>{{ $key + 1 }}</td>
                                     <td>{{ $admin->name }}</td>
                                     <td>{{ $admin->email }}</td>
                                     <td>{{ date('d-m-Y', strtotime($admin->created_at)) }}</td>
