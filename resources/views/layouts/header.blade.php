@@ -143,7 +143,8 @@
 
                         @if (Auth::user()->user_type == 1)
                             <li class="nav-item">
-                                <a href="{{ url('admin/dashboard') }}" class="nav-link @if(Request::segment(2)=='dashboard') active @endif">
+                                <a href="{{ url('admin/dashboard') }}"
+                                    class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
                                         Dashboard
@@ -151,7 +152,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/admin/list') }}" class="nav-link @if(Request::segment(2)=='admin') active @endif">
+                                <a href="{{ url('admin/admin/list') }}"
+                                    class="nav-link @if (Request::segment(2) == 'admin') active @endif">
                                     <i class="nav-icon far fa-user"></i>
                                     <p>
                                         Admin
@@ -159,15 +161,18 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/class/list') }}" class="nav-link @if(Request::segment(2)=='class') active @endif">
+                                <a href="{{ url('admin/class/list') }}"
+                                    class="nav-link @if (Request::segment(2) == 'class') active @endif">
                                     <i class="nav-icon far fa-user"></i>
+
                                     <p>
                                         Class
                                     </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/subject/list') }}" class="nav-link @if(Request::segment(2)=='subject') active @endif">
+                                <a href="{{ url('admin/subject/list') }}"
+                                    class="nav-link @if (Request::segment(2) == 'subject') active @endif">
                                     <i class="nav-icon far fa-user"></i>
                                     <p>
                                         Subject
@@ -175,7 +180,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/assign_subject/list') }}" class="nav-link @if(Request::segment(2)=='assign_subject') active @endif">
+                                <a href="{{ url('admin/assign_subject/list') }}"
+                                    class="nav-link @if (Request::segment(2) == 'assign_subject') active @endif">
                                     <i class="nav-icon far fa-user"></i>
                                     <p>
                                         Assign Subject
@@ -184,7 +190,8 @@
                             </li>
                         @elseif (Auth::user()->user_type == 2)
                             <li class="nav-item">
-                                <a href="{{ url('teacher/dashboard') }}" class="nav-link @if(Request::segment(2)=='dashboard') active @endif">
+                                <a href="{{ url('teacher/dashboard') }}"
+                                    class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
                                         Dashboard
@@ -193,7 +200,8 @@
                             </li>
                         @elseif (Auth::user()->user_type == 3)
                             <li class="nav-item">
-                                <a href="{{ url('student/dashboard') }}" class="nav-link @if(Request::segment(2)=='dashboard') active @endif">
+                                <a href="{{ url('student/dashboard') }}"
+                                    class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
                                         Dashboard
@@ -202,7 +210,8 @@
                             </li>
                         @elseif (Auth::user()->user_type == 4)
                             <li class="nav-item">
-                                <a href="{{ url('parent/dashboard') }}" class="nav-link @if(Request::segment(2)=='dashboard') active @endif">
+                                <a href="{{ url('parent/dashboard') }}"
+                                    class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
                                         Dashboard
@@ -210,8 +219,7 @@
                                 </a>
                             </li>
                         @endif
-
-
+                        {{-- Logout --}}
                         <li class="nav-item">
                             <a href="{{ url('logout') }}" class="nav-link ">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
@@ -220,6 +228,7 @@
                                 </p>
                             </a>
                         </li>
+                        {{-- Logout --}}
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

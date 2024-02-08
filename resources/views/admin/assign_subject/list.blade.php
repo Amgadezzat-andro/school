@@ -127,6 +127,8 @@
                                             class="btn btn-primary">Edit</a>
                                         <a href="{{ url('admin/assign_subject/delete/' . $subject->id) }}"
                                             class="btn btn-danger">Delete</a>
+                                            <a href="{{ url('admin/assign_subject/edit_single/' . $subject->id) }}"
+                                                class="btn btn-dark">Edit Single</a>
                                     </td>
                                 </tr>
                             @endforeach

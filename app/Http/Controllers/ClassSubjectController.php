@@ -15,12 +15,14 @@ class ClassSubjectController extends Controller
         $data['subjects'] = ClassSubjectModel::getAssignedSubjects();
         return view('admin.assign_subject.list', $data);
     }
+
     public function add()
     {
         $data['getClass'] = ClassModel::getClass();
         $data['getSubject'] = SubjectModel::getSubject();
         return view('admin.assign_subject.add', $data);
     }
+
     public function PostAdd(Request $request)
     {
         if (!empty($request->subject_id)) {
@@ -50,9 +52,9 @@ class ClassSubjectController extends Controller
 
     public function edit($id)
     {
-        $data['assignedSubject'] = ClassSubjectModel::getAssingedSubjectByID($id);
         $data['getClass'] = ClassModel::getClass();
         $data['getSubject'] = SubjectModel::getSubject();
+        $data['assignedSubject'] = ClassSubjectModel::getAssingedSubjectByID($id);
         $data['AssingedSubjectsInSameClass'] = ClassSubjectModel::getAssignedSubjectsByClassID($data['assignedSubject']->class_id);
         if (!empty($data)) {
             return view('admin.assign_subject.edit', $data);
@@ -60,6 +62,38 @@ class ClassSubjectController extends Controller
             abort(404);
         }
     }
+
+    public function editSingle($id)
+    {
+        $data['getClass'] = ClassModel::getClass();
+        $data['getSubject'] = SubjectModel::getSubject();
+        $data['assignedSubject'] = ClassSubjectModel::getAssingedSubjectByID($id);
+        if (!empty($data)) {
+            return view('admin.assign_subject.edit_single', $data);
+        } else {
+            abort(404);
+        }
+    }
+    public function updateSingle($id, Request $request)
+    {
+        $countAlready = ClassSubjectModel::countAlready($request->class_id, $request->subject_id);
+        if (!empty($request->subject_id)) {
+            if (!empty($countAlready)) {
+                $countAlready->status = $request->status;
+                $countAlready->save();
+                return redirect('admin/assign_subject/list')->with('success', 'Subject Status Successfully Updated');
+            } else {
+                $save = ClassSubjectModel::getAssingedSubjectByID($id);
+                $save->class_id = $request->class_id;
+                $save->subject_id = $request->subject_id;
+                $save->status = $request->status;
+                $save->save();
+                return redirect('admin/assign_subject/list')->with('success', 'Subject Successfully Assigned To Class');
+            }
+        }
+    }
+
+
     public function PostEdit($id, Request $request)
     {
         // Delete All Assinged Subjects To Same Class
@@ -88,6 +122,7 @@ class ClassSubjectController extends Controller
 
         }
     }
+
     public function delete($id)
     {
         $subject = ClassSubjectModel::getAssingedSubjectByID($id);

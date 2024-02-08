@@ -71,13 +71,15 @@ Route::group(['middleware' => 'admin'], function () {
 
     //List Assign-Subject
     Route::get('admin/assign_subject/list', [ClassSubjectController::class, 'list']);
-    // Add New Subject view - Add Subject
+    // Add Assign-Subject view - Assign-Subject
     Route::get('admin/assign_subject/add', [ClassSubjectController::class, 'add']);
     Route::post('admin/assign_subject/add', [ClassSubjectController::class, 'PostAdd']);
-    // Edit Subject view - Edit Subject
+    // Edit Assign-Subject view - Edit Assign-Subject
     Route::get('admin/assign_subject/edit/{id}', [ClassSubjectController::class, 'edit']);
+    Route::get('admin/assign_subject/edit_single/{id}', [ClassSubjectController::class, 'editSingle']);
+    Route::post('admin/assign_subject/edit_single/{id}', [ClassSubjectController::class, 'updateSingle']);
     Route::post('admin/assign_subject/edit/{id}', [ClassSubjectController::class, 'PostEdit']);
-    // Delete Subject
+    // Delete Assign-Subject
     Route::get('admin/assign_subject/delete/{id}', [ClassSubjectController::class, 'delete']);
 
 
