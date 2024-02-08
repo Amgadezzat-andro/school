@@ -79,5 +79,10 @@ class User extends Authenticatable
         // return self::find($adminID);
         return User::where('id', '=', $adminID)->first();
     }
+    static public function getSingle($userID)
+    {
+        return self::find($userID);
+        // return User::where('id', '=', $adminID)->first();
+    }
 
 }
