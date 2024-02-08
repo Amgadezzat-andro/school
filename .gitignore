@@ -4,6 +4,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/upload/profile/
 .env
 .env.backup
 .env.production

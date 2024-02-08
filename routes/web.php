@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,11 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/admin/edit/{id}', [AdminController::class, 'PostEdit']);
     Route::get('admin/admin/delete/{id}', [AdminController::class, 'delete']);
 
+    // Student
+    Route::get('admin/student/list', [StudentController::class, 'list']);
+    Route::get('admin/student/add', [StudentController::class, 'add']);
+    Route::post('admin/student/add', [StudentController::class, 'PostAdd']);
+
     // Class
     Route::get('admin/class/list', [ClassController::class, 'list']);
     Route::get('admin/class/add', [ClassController::class, 'add']);
@@ -76,6 +82,7 @@ Route::group(['middleware' => 'admin'], function () {
     //Change Password
     Route::get('admin/change_password', [UserController::class, 'change_password']);
     Route::post('admin/change_password', [UserController::class, 'update_change_password']);
+
 
 });
 
