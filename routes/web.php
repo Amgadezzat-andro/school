@@ -55,6 +55,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/student/list', [StudentController::class, 'list']);
     Route::get('admin/student/add', [StudentController::class, 'add']);
     Route::post('admin/student/add', [StudentController::class, 'PostAdd']);
+    Route::get('admin/student/edit/{id}', [StudentController::class, 'edit']);
+    Route::post('admin/student/edit/{id}', [StudentController::class, 'PostEdit']);
 
     // ? Class
     Route::get('admin/class/list', [ClassController::class, 'list']);
@@ -109,7 +111,7 @@ Route::group(['middleware' => 'student'], function () {
 
 });
 
-// ?? Parent GROUP ?? 
+// ?? Parent GROUP ??
 Route::group(['middleware' => 'parent'], function () {
     // ? Show Dashboard
     Route::get('parent/dashboard', [DashboardController::class, 'dashboard']);
