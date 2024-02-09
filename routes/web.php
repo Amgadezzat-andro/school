@@ -22,25 +22,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// AUTH
+// ** AUTH **
 Route::get('/', [AuthController::class, 'login']);
 Route::get('login', [AuthController::class, 'login']);
 Route::post('login', [AuthController::class, 'AuthLogin']);
 Route::get('logout', [AuthController::class, 'logout']);
 
-// Forget Password
+// ** Forget Password **
 Route::get('forget-password', [AuthController::class, 'forgetpassword']);
 Route::post('forget-password', [AuthController::class, 'PostForgetPassword']);
 Route::get('reset/{token}', [AuthController::class, 'reset']);
 Route::post('reset/{token}', [AuthController::class, 'PostReset']);
 
 
+// !!! MIDDLE WARES GROUPS
+
+// ?? ADMIN GROUP ??
 Route::group(['middleware' => 'admin'], function () {
 
-    //Dashboard
+    // ? Dashboard
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
 
-    // Admin
+    // ? Admin
     Route::get('admin/admin/list', [AdminController::class, 'list']);
     Route::get('admin/admin/add', [AdminController::class, 'add']);
     Route::post('admin/admin/add', [AdminController::class, 'PostAdd']);
@@ -48,12 +51,12 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/admin/edit/{id}', [AdminController::class, 'PostEdit']);
     Route::get('admin/admin/delete/{id}', [AdminController::class, 'delete']);
 
-    // Student
+    // ? Student
     Route::get('admin/student/list', [StudentController::class, 'list']);
     Route::get('admin/student/add', [StudentController::class, 'add']);
     Route::post('admin/student/add', [StudentController::class, 'PostAdd']);
 
-    // Class
+    // ? Class
     Route::get('admin/class/list', [ClassController::class, 'list']);
     Route::get('admin/class/add', [ClassController::class, 'add']);
     Route::post('admin/class/add', [ClassController::class, 'PostAdd']);
@@ -61,7 +64,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/class/edit/{id}', [ClassController::class, 'PostEdit']);
     Route::get('admin/class/delete/{id}', [ClassController::class, 'delete']);
 
-    // Subject
+    // ? Subject
     Route::get('admin/subject/list', [SubjectController::class, 'list']);
     Route::get('admin/subject/add', [SubjectController::class, 'add']);
     Route::post('admin/subject/add', [SubjectController::class, 'PostAdd']);
@@ -69,7 +72,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/subject/edit/{id}', [SubjectController::class, 'PostEdit']);
     Route::get('admin/subject/delete/{id}', [SubjectController::class, 'delete']);
 
-    //Assign-Subject
+    // ? Assign-Subject
     Route::get('admin/assign_subject/list', [ClassSubjectController::class, 'list']);
     Route::get('admin/assign_subject/add', [ClassSubjectController::class, 'add']);
     Route::post('admin/assign_subject/add', [ClassSubjectController::class, 'PostAdd']);
@@ -79,35 +82,38 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/assign_subject/edit/{id}', [ClassSubjectController::class, 'PostEdit']);
     Route::get('admin/assign_subject/delete/{id}', [ClassSubjectController::class, 'delete']);
 
-    //Change Password
+    // ? Change Password
     Route::get('admin/change_password', [UserController::class, 'change_password']);
     Route::post('admin/change_password', [UserController::class, 'update_change_password']);
 
 
 });
 
+// ?? Teacher GROUP ??
 Route::group(['middleware' => 'teacher'], function () {
-    //Show Dashboard
+    // ? Show Dashboard
     Route::get('teacher/dashboard', [DashboardController::class, 'dashboard']);
-    //Change Password
+    // ? Change Password
     Route::get('teacher/change_password', [UserController::class, 'change_password']);
     Route::post('teacher/change_password', [UserController::class, 'update_change_password']);
 
 });
 
+// ?? Student GROUP ??
 Route::group(['middleware' => 'student'], function () {
-    //Show Dashboard
+    // ? Show Dashboard
     Route::get('student/dashboard', [DashboardController::class, 'dashboard']);
-    //Change Password
+    // ? Change Password
     Route::get('student/change_password', [UserController::class, 'change_password']);
     Route::post('student/change_password', [UserController::class, 'update_change_password']);
 
 });
 
+// ?? Parent GROUP ?? 
 Route::group(['middleware' => 'parent'], function () {
-    //Show Dashboard
+    // ? Show Dashboard
     Route::get('parent/dashboard', [DashboardController::class, 'dashboard']);
-    //Change Password
+    // ? Change Password
     Route::get('parent/change_password', [UserController::class, 'change_password']);
     Route::post('parent/change_password', [UserController::class, 'update_change_password']);
 

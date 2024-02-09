@@ -25,7 +25,22 @@ class StudentController extends Controller
     }
     public function PostAdd(Request $request)
     {
+        // ? Backend Validation
+        request()->validate([
+            'email' => 'required|email|unique:users',
+            'height' => 'max:10',
+            'weight' => 'max:10',
+            'blood_group' => 'max:10',
+            'mobile_number' => 'max:15|min:8',
+            'caste' => 'max:15',
+            'religon' => 'max:50',
+            'admission_number' => 'max:50',
+            'roll_number' => 'max:50',
+            'religion' => 'max:50',
 
+        ]);
+        
+        // ?Add New Student
         $student = new User;
         $student->name = trim($request->name);
         $student->last_name = trim($request->last_name);

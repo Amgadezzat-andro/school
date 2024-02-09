@@ -41,9 +41,9 @@ return new class extends Migration {
             $table->string('mobile_number', 15)->nullable();
             $table->date('admission_date')->nullable();
             $table->string('profile_pic', 100)->nullable();
-            $table->string('blood_group', 100)->nullable();
-            $table->string('height', 100)->nullable();
-            $table->string('weight', 100)->nullable();
+            $table->string('blood_group', 10)->nullable();
+            $table->string('height', 10)->nullable();
+            $table->string('weight', 10)->nullable();
 
 
             $table->rememberToken();
