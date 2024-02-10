@@ -143,7 +143,6 @@ class User extends Authenticatable
         return self::find($userID);
         // return User::where('id', '=', $adminID)->first();
     }
-
      public function getProfile(){
         if(!empty($this->profile_pic) && file_exists('upload/profile/'.$this->profile_pic)){
             return url('upload/profile/'.$this->profile_pic);
@@ -152,4 +151,42 @@ class User extends Authenticatable
         }
     }
 
+    static public function getParents()
+    {
+        $return = self::select('users.*')
+            ->where('users.user_type', '=', 4)
+            ->where('users.is_delete', '=', 0);
+            // Filters
+        if (!empty(Request::get('name'))) {
+            $return = $return->where('users.name', 'like', '%' . Request::get('name') . '%');
+        }
+        if (!empty(Request::get('last_name'))) {
+            $return = $return->where('users.last_name', 'like', '%' . Request::get('last_name') . '%');
+        }
+        if (!empty(Request::get('email'))) {
+            $return = $return->where('users.email', 'like', '%' . Request::get('email') . '%');
+        }
+        if (!empty(Request::get('gender'))) {
+            $return = $return->where('users.gender', '=', Request::get('gender'));
+        }
+        if (!empty(Request::get('occupation'))) {
+            $return = $return->where('users.occupation', 'like', '%' . Request::get('occupation') . '%');
+        }
+        if (!empty(Request::get('address'))) {
+            $return = $return->where('users.address', 'like', '%' . Request::get('address') . '%');
+        }
+        if (!empty(Request::get('mobile_number'))) {
+            $return = $return->where('users.mobile_number', 'like', '%' . Request::get('mobile_number') . '%');
+        }
+        if (!empty(Request::get('status'))) {
+            $return = $return->where('users.status', '=', Request::get('status'));
+        }
+        if (!empty(Request::get('date'))) {
+            $return = $return->whereDate('users.created_at', '=', Request::get('date'));
+        }
+        $return = $return->orderBy('users.id', 'desc')
+            ->paginate(20);
+
+        return $return;
+    }
 }

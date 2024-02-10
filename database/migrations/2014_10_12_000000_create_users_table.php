@@ -45,6 +45,11 @@ return new class extends Migration {
             $table->string('height', 10)->nullable();
             $table->string('weight', 10)->nullable();
 
+            // Parent Info
+            $table->string('occupation', 255)->nullable();
+            $table->string('address', 255)->nullable();
+
+
 
             $table->rememberToken();
             $table->timestamps();

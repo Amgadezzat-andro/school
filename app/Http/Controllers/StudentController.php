@@ -33,7 +33,6 @@ class StudentController extends Controller
             'blood_group' => 'max:10',
             'mobile_number' => 'max:15|min:8',
             'caste' => 'max:15',
-            'religon' => 'max:50',
             'admission_number' => 'max:50',
             'roll_number' => 'max:50',
             'religion' => 'max:50',
