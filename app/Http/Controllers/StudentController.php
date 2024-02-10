@@ -122,8 +122,8 @@ class StudentController extends Controller
         if (!empty($request->file('profile_pic'))) {
 
             // If There is Image Ater Click Upload Delete It
-            if(!empty($student->getProfile())){
-                unlink('upload/profile/'.$student->profile_pic);
+            if (!empty($student->getProfile())) {
+                unlink('upload/profile/' . $student->profile_pic);
             }
             // Else Create New Image
             $ext = $request->file('profile_pic')->getClientOriginalExtension();
@@ -151,6 +151,15 @@ class StudentController extends Controller
 
         // dd($request->all());
         return redirect('admin/student/list')->with('success', 'Student Successfully Updated');
+    }
+    public function delete($id)
+    {
+        $student = User::getSingle($id);
+        if(!empty($student)){
+            $student->is_delete = 1;
+            $student->save();
+        }
+        return redirect('admin/student/list')->with('success', 'Student Successfully Deleted');
     }
 
 }

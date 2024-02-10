@@ -16,7 +16,7 @@ class ClassModel extends Model
     {
         DB::enableQueryLog();
 
-        $return = self::select('class.*', 'users.name as created_by')
+        $return = self::select('class.*', 'users.name as created_by' ,'class.status as status')
             ->join('users', 'users.id', 'class.created_by')
             ->where('class.is_delete', '=', 0);
 
