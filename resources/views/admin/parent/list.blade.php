@@ -117,7 +117,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body p-0">
-                    <table class="table table-responsive ">
+                    <table class="table table-bordered table-hover table-responsive ">
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
@@ -163,10 +163,14 @@
 
                                     <td>{{ date('d-m-Y', strtotime($parent->created_at)) }}</td>
                                     <td>
-                                        <a href="{{ url('admin/parent/edit/' . $parent->id) }}"
-                                            class="btn btn-primary">Edit</a>
-                                        <a href="{{ url('admin/parent/delete/' . $parent->id) }}"
-                                            class="btn btn-danger">Delete</a>
+                                        <div class="btn-group">
+                                            <a href="{{ url('admin/parent/edit/' . $parent->id) }}"
+                                                class="btn btn-primary mx-2 ">Edit</a>
+                                            <a href="{{ url('admin/parent/delete/' . $parent->id) }}"
+                                                class="btn btn-danger mx-2 ">Delete</a>
+                                            <a href="{{ url('admin/parent/my-student/' . $parent->id) }}"
+                                                class="btn btn-dark mx-2 ">My Students</a>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

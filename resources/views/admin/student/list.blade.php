@@ -28,109 +28,120 @@
 
 
 
-       <!-- Search Form -->
-       <div class="card card-primary">
-        <!-- form start -->
-        <form action="" method="get">
-            <div class="card-header">
-                <h3 class="card-title">Search Student</h3>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="form-group col-md-3">
-                        <label>First Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter Student's First Name"
-                            value="{{ old('name', Request::get('name')) }}">
+            <!-- Search Form -->
+            <div class="card card-primary">
+                <!-- form start -->
+                <form action="" method="get">
+                    <div class="card-header">
+                        <h3 class="card-title">Search Student</h3>
                     </div>
-                    <div class="form-group col-md-3">
-                        <label>Last Name</label>
-                        <input type="text" class="form-control" name="last_name" placeholder="Enter Student's Last Name"
-                            value="{{ old('last_name', Request::get('last_name')) }}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Email</label>
-                        <input type="text" class="form-control" name="email" placeholder="Enter Student's Email"
-                            value="{{ old('email', Request::get('email')) }}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Admission Number</label>
-                        <input type="text" class="form-control" name="admission_number" placeholder="Enter Student's Admission Number"
-                            value="{{ old('admission_number', Request::get('admission_number')) }}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Roll Number</label>
-                        <input type="text" class="form-control" name="roll_number" placeholder="Enter Student's Roll Number"
-                            value="{{ old('roll_number', Request::get('roll_number')) }}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Class</label>
-                        <input type="text" class="form-control" name="class_name" placeholder="Enter Student's Class Name"
-                            value="{{ old('class_name', Request::get('class_name')) }}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Gender</label>
-                        <select name="gender" class="form-control">
-                            <option value="" selected>All</option>
-                            <option value='male' {{ Request::get('gender') == 'male' ? 'selected' : '' }}>Male
-                            </option>
-                            <option value='female' {{ Request::get('gender') == 'female' ? 'selected' : '' }}>Female
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Caste</label>
-                        <input type="text" class="form-control" name="caste" placeholder="Enter Student's Caste"
-                            value="{{ old('caste', Request::get('caste')) }}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Religion</label>
-                        <input type="text" class="form-control" name="religion" placeholder="Enter Student's Religion"
-                            value="{{ old('religion', Request::get('religion')) }}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Mobile Number</label>
-                        <input type="text" class="form-control" name="mobile_number" placeholder="Enter Student's Mobile Number"
-                            value="{{ old('mobile_number', Request::get('mobile_number')) }}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Blood Group</label>
-                        <input type="text" class="form-control" name="blood_group" placeholder="Enter Student's Blood Group"
-                            value="{{ old('blood_group', Request::get('blood_group')) }}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Status</label>
-                        <select name="status" class="form-control">
-                            <option value="" selected>All</option>
-                            <option value='1.0' {{ Request::get('status') == '1.0' ? 'selected' : '' }}>Active
-                            </option>
-                            <option value='0.0' {{ Request::get('status') == '0.0' ? 'selected' : '' }}>InActive
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Created At</label>
-                        <input type="date" class="form-control" name="date" value="{{ Request::get('date') }}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Admission Date</label>
-                        <input type="date" class="form-control" name="admission_date" value="{{ Request::get('admission_date') }}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Birth Date</label>
-                        <input type="date" class="form-control" name="date_of_birth" value="{{ Request::get('date_of_birth') }}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <button class="btn btn-primary" type="submit" style="margin-top: 30px">Search</button>
-                        <a href="{{ url('admin/student/list') }}" class="btn btn-success"
-                            style="margin-top: 30px">Clear</a>
-                    </div>
-                </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" name="name"
+                                    placeholder="Enter Student's First Name"
+                                    value="{{ old('name', Request::get('name')) }}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" name="last_name"
+                                    placeholder="Enter Student's Last Name"
+                                    value="{{ old('last_name', Request::get('last_name')) }}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="email"
+                                    placeholder="Enter Student's Email" value="{{ old('email', Request::get('email')) }}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Admission Number</label>
+                                <input type="text" class="form-control" name="admission_number"
+                                    placeholder="Enter Student's Admission Number"
+                                    value="{{ old('admission_number', Request::get('admission_number')) }}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Roll Number</label>
+                                <input type="text" class="form-control" name="roll_number"
+                                    placeholder="Enter Student's Roll Number"
+                                    value="{{ old('roll_number', Request::get('roll_number')) }}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Class</label>
+                                <input type="text" class="form-control" name="class_name"
+                                    placeholder="Enter Student's Class Name"
+                                    value="{{ old('class_name', Request::get('class_name')) }}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Gender</label>
+                                <select name="gender" class="form-control">
+                                    <option value="" selected>All</option>
+                                    <option value='male' {{ Request::get('gender') == 'male' ? 'selected' : '' }}>Male
+                                    </option>
+                                    <option value='female' {{ Request::get('gender') == 'female' ? 'selected' : '' }}>Female
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Caste</label>
+                                <input type="text" class="form-control" name="caste"
+                                    placeholder="Enter Student's Caste" value="{{ old('caste', Request::get('caste')) }}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Religion</label>
+                                <input type="text" class="form-control" name="religion"
+                                    placeholder="Enter Student's Religion"
+                                    value="{{ old('religion', Request::get('religion')) }}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Mobile Number</label>
+                                <input type="text" class="form-control" name="mobile_number"
+                                    placeholder="Enter Student's Mobile Number"
+                                    value="{{ old('mobile_number', Request::get('mobile_number')) }}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Blood Group</label>
+                                <input type="text" class="form-control" name="blood_group"
+                                    placeholder="Enter Student's Blood Group"
+                                    value="{{ old('blood_group', Request::get('blood_group')) }}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Status</label>
+                                <select name="status" class="form-control">
+                                    <option value="" selected>All</option>
+                                    <option value='1.0' {{ Request::get('status') == '1.0' ? 'selected' : '' }}>Active
+                                    </option>
+                                    <option value='0.0' {{ Request::get('status') == '0.0' ? 'selected' : '' }}>InActive
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Created At</label>
+                                <input type="date" class="form-control" name="date"
+                                    value="{{ Request::get('date') }}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Admission Date</label>
+                                <input type="date" class="form-control" name="admission_date"
+                                    value="{{ Request::get('admission_date') }}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Birth Date</label>
+                                <input type="date" class="form-control" name="date_of_birth"
+                                    value="{{ Request::get('date_of_birth') }}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <button class="btn btn-primary" type="submit" style="margin-top: 30px">Search</button>
+                                <a href="{{ url('admin/student/list') }}" class="btn btn-success"
+                                    style="margin-top: 30px">Clear</a>
+                            </div>
+                        </div>
 
+                    </div>
+                    <!-- /.card-body -->
+                </form>
             </div>
-            <!-- /.card-body -->
-        </form>
-    </div>
-    <!-- /.card -->
+            <!-- /.card -->
 
 
 
@@ -150,6 +161,7 @@
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Profile Image</th>
+                                <th>Parent Name</th>
                                 <th>Class Name</th>
                                 <th>Email</th>
                                 <th>Admission Number</th>
@@ -182,6 +194,7 @@
                                             <p class="text-danger">Not Found</p>
                                         @endif
                                     </td>
+                                    <td>{{ $student->parent_name . ' ' . $student->parent_last_name }}</td>
                                     <td>{{ $student->class_name }}</td>
                                     <td>{{ $student->email }}</td>
                                     <td>{{ $student->admission_number }}</td>

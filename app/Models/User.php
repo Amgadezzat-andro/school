@@ -76,11 +76,12 @@ class User extends Authenticatable
     }
     static public function getStudents()
     {
-        $return = self::select('users.*','class.name as class_name')
-            ->leftJoin('class','class.id','users.class_id')
+        $return = self::select('users.*', 'class.name as class_name', 'parents.name as parent_name' , 'parents.last_name as parent_last_name')
+            ->leftJoin('users as parents', 'parents.id', '=', 'users.parent_id')
+            ->leftJoin('class', 'class.id', 'users.class_id')
             ->where('users.user_type', '=', 3)
             ->where('users.is_delete', '=', 0);
-            // Filters
+        // Filters
         if (!empty(Request::get('name'))) {
             $return = $return->where('users.name', 'like', '%' . Request::get('name') . '%');
         }
@@ -143,10 +144,11 @@ class User extends Authenticatable
         return self::find($userID);
         // return User::where('id', '=', $adminID)->first();
     }
-     public function getProfile(){
-        if(!empty($this->profile_pic) && file_exists('upload/profile/'.$this->profile_pic)){
-            return url('upload/profile/'.$this->profile_pic);
-        }else{
+    public function getProfile()
+    {
+        if (!empty($this->profile_pic) && file_exists('upload/profile/' . $this->profile_pic)) {
+            return url('upload/profile/' . $this->profile_pic);
+        } else {
             return "";
         }
     }
@@ -156,7 +158,7 @@ class User extends Authenticatable
         $return = self::select('users.*')
             ->where('users.user_type', '=', 4)
             ->where('users.is_delete', '=', 0);
-            // Filters
+        // Filters
         if (!empty(Request::get('name'))) {
             $return = $return->where('users.name', 'like', '%' . Request::get('name') . '%');
         }
@@ -188,5 +190,52 @@ class User extends Authenticatable
             ->paginate(20);
 
         return $return;
+    }
+
+    static public function getSearchStudents()
+    {
+        if (!empty(Request::get('id')) || !empty(Request::get('name')) || !empty(Request::get('last_name')) || !empty(Request::get('email'))) {
+            $return = self::select('users.*', 'class.name as class_name', 'parents.name as parent_name')
+                ->leftJoin('users as parents', 'parents.id', '=', 'users.parent_id')
+                ->leftJoin('class', 'class.id', 'users.class_id')
+                ->where('users.user_type', '=', 3)
+                ->where('users.is_delete', '=', 0);
+            // Filters
+            if (!empty(Request::get('id'))) {
+                $return = $return
+                    ->where('users.id', 'like', '%' . Request::get('id') . '%');
+            }
+            if (!empty(Request::get('name'))) {
+                $return = $return
+                    ->where('users.name', 'like', '%' . Request::get('name') . '%');
+            }
+            if (!empty(Request::get('last_name'))) {
+                $return = $return
+                    ->where('users.last_name', 'like', '%' . Request::get('last_name') . '%');
+            }
+            if (!empty(Request::get('email'))) {
+                $return = $return
+                    ->where('users.email', 'like', '%' . Request::get('email') . '%');
+            }
+            $return = $return->orderBy('users.id', 'desc')
+                ->limit(50)
+                ->get();
+
+            return $return;
+        }
+    }
+    public static function getMyStudents($parentID)
+    {
+        $return = self::select('users.*', 'class.name as class_name', 'parents.name as parent_name')
+            ->leftJoin('users as parents', 'parents.id', '=', 'users.parent_id')
+            ->leftJoin('class', 'class.id', 'users.class_id')
+            ->where('users.user_type', '=', 3)
+            ->where('users.parent_id', '=', $parentID)
+            ->where('users.is_delete', '=', 0)
+            ->orderBy('users.id', 'desc')
+            ->get();
+
+        return $return;
+
     }
 }
