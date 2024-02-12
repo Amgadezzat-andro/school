@@ -136,5 +136,11 @@ class ParentController extends Controller
         return redirect()->back()->with('success', 'Student Assigned Deleted');
     }
 
+    public function my_student(){
+        $id = Auth::user()->id;
+        $data['parentStudents'] = User::getMyStudents($id);
+        return view('parent.my_student', $data);
+    }
+
 
 }

@@ -57,4 +57,18 @@ class ClassSubjectModel extends Model
     {
         return self::where('class_id', '=', $classID)->delete();
     }
+    public static function getMySubjects($classID)
+    {
+        $return = self::select('class_subject.*', 'subject.name as subject_name')
+            ->join('users', 'users.id', 'class_subject.created_by')
+            ->join('class', 'class.id', 'class_subject.class_id')
+            ->join('subject', 'subject.id', 'class_subject.subject_id')
+            ->where('class_subject.class_id','=',$classID)
+            ->where('class_subject.is_delete', '=', 0)
+            ->where('class_subject.status', '=', 1)
+            ->orderBy('class_subject.id','desc')
+            ->get();
+        // dd(DB::getQueryLog());
+        return $return;
+    }
 }

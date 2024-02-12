@@ -119,7 +119,8 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="javascript:;" class="brand-link" style="text-align: center">
-                <span class="brand-text font-weight-light" style="font-weight: bold !important ; font-size: 20px;">School</span>
+                <span class="brand-text font-weight-light"
+                    style="font-weight: bold !important ; font-size: 20px;">School</span>
             </a>
 
             <!-- Sidebar -->
@@ -154,7 +155,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ url('admin/account') }}"
-                                class="nav-link @if (Request::segment(2) == 'account') active @endif">
+                                    class="nav-link @if (Request::segment(2) == 'account') active @endif">
                                     <i class="nav-icon fas fa-user-edit"></i>
                                     <p>
                                         My Account
@@ -236,7 +237,7 @@
                             </li>
 
                             {{-- Teacher --}}
-                            @elseif (Auth::user()->user_type == 2)
+                        @elseif (Auth::user()->user_type == 2)
                             <li class="nav-item">
                                 <a href="{{ url('teacher/dashboard') }}"
                                     class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
@@ -266,7 +267,7 @@
                             </li>
 
                             {{-- Student --}}
-                            @elseif (Auth::user()->user_type == 3)
+                        @elseif (Auth::user()->user_type == 3)
                             <li class="nav-item">
                                 <a href="{{ url('student/dashboard') }}"
                                     class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
@@ -277,8 +278,17 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ url('student/my_subject') }}"
+                                    class="nav-link @if (Request::segment(2) == 'my_subject') active @endif">
+                                    <i class="nav-icon fas fa-book"></i>
+                                    <p>
+                                        My Subjects
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ url('student/account') }}"
-                                class="nav-link @if (Request::segment(2) == 'account') active @endif">
+                                    class="nav-link @if (Request::segment(2) == 'account') active @endif">
                                     <i class="nav-icon fas fa-user-edit"></i>
                                     <p>
                                         My Account
@@ -295,7 +305,7 @@
                                 </a>
                             </li>
                             {{-- Parent --}}
-                            @elseif (Auth::user()->user_type == 4)
+                        @elseif (Auth::user()->user_type == 4)
                             <li class="nav-item">
                                 <a href="{{ url('parent/dashboard') }}"
                                     class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
@@ -306,8 +316,17 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ url('parent/my_student') }}"
+                                    class="nav-link @if (Request::segment(2) == 'my_student') active @endif">
+                                    <i class="nav-icon fas fa-user-friends"></i>
+                                    <p>
+                                        My Student
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ url('parent/account') }}"
-                                class="nav-link @if (Request::segment(2) == 'account') active @endif">
+                                    class="nav-link @if (Request::segment(2) == 'account') active @endif">
                                     <i class="nav-icon fas fa-user-edit"></i>
                                     <p>
                                         My Account
