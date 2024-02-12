@@ -121,7 +121,6 @@ class TeacherController extends Controller
         if (!empty($request->password)) {
             $teacher->password = Hash::make($request->password);
         }
-        $teacher->user_type = 2;
         $teacher->save();
 
 
