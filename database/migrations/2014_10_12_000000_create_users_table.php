@@ -51,6 +51,17 @@ return new class extends Migration {
             $table->string('occupation', 255)->nullable();
             $table->string('address', 255)->nullable();
 
+            // Teacher Info
+            $table->date('date_of_join')->nullable();
+            $table->string('martial_status', 255)->nullable();
+            $table->string('current_address', 255)->nullable();
+            $table->string('permanent_address', 255)->nullable();
+            $table->string('qualification', 255)->nullable();
+            $table->string('work_exp', 255)->nullable();
+            $table->string('note', 255)->nullable();
+
+
+
 
 
             $table->rememberToken();

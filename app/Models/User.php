@@ -76,7 +76,7 @@ class User extends Authenticatable
     }
     static public function getStudents()
     {
-        $return = self::select('users.*', 'class.name as class_name', 'parents.name as parent_name' , 'parents.last_name as parent_last_name')
+        $return = self::select('users.*', 'class.name as class_name', 'parents.name as parent_name', 'parents.last_name as parent_last_name')
             ->leftJoin('users as parents', 'parents.id', '=', 'users.parent_id')
             ->leftJoin('class', 'class.id', 'users.class_id')
             ->where('users.user_type', '=', 3)
@@ -126,6 +126,49 @@ class User extends Authenticatable
         }
         if (!empty(Request::get('admission_date'))) {
             $return = $return->whereDate('users.admission_date', '=', Request::get('admission_date'));
+        }
+
+
+        $return = $return->orderBy('users.id', 'desc')
+            ->paginate(20);
+
+        return $return;
+    }
+    static public function getTeachers()
+    {
+        $return = self::select('users.*')
+            ->where('users.user_type', '=', 2)
+            ->where('users.is_delete', '=', 0);
+        // Filters
+        if (!empty(Request::get('name'))) {
+            $return = $return->where('users.name', 'like', '%' . Request::get('name') . '%');
+        }
+        if (!empty(Request::get('last_name'))) {
+            $return = $return->where('users.last_name', 'like', '%' . Request::get('last_name') . '%');
+        }
+        if (!empty(Request::get('email'))) {
+            $return = $return->where('users.email', 'like', '%' . Request::get('email') . '%');
+        }
+        if (!empty(Request::get('gender'))) {
+            $return = $return->where('users.gender', '=', Request::get('gender'));
+        }
+        if (!empty(Request::get('mobile_number'))) {
+            $return = $return->where('users.mobile_number', 'like', '%' . Request::get('mobile_number') . '%');
+        }
+        if (!empty(Request::get('martial_status'))) {
+            $return = $return->where('users.martial_status', 'like', '%' . Request::get('martial_status') . '%');
+        }
+        if (!empty(Request::get('current_address'))) {
+            $return = $return->where('users.current_address', 'like', '%' . Request::get('current_address') . '%');
+        }
+        if (!empty(Request::get('date_of_join'))) {
+            $return = $return->whereDate('users.date_of_join', '=', Request::get('date_of_join'));
+        }
+        if (!empty(Request::get('status'))) {
+            $return = $return->where('users.status', '=', Request::get('status'));
+        }
+        if (!empty(Request::get('date'))) {
+            $return = $return->whereDate('users.created_at', '=', Request::get('date'));
         }
 
 
