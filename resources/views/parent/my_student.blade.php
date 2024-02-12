@@ -49,6 +49,7 @@
                                 <th>BirthDate</th>
                                 <th>Mobile Number</th>
                                 <th>Created Date</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -83,6 +84,10 @@
                                     @endif
                                     <td>{{ $student->mobile_number }}</td>
                                     <td>{{ date('d-m-Y', strtotime($student->created_at)) }}</td>
+                                    <td>
+                                        <a class="btn btn-dark"
+                                            href="{{ url('parent/my_student/subject/' . $student->id) }}">Subjects</a>
+                                    </td>
                                 </tr>
                             @endforeach
 
