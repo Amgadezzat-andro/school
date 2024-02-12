@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AssignClassTeacherController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ClassSubjectController;
@@ -57,7 +58,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/admin/edit/{id}', [AdminController::class, 'PostEdit']);
     Route::get('admin/admin/delete/{id}', [AdminController::class, 'delete']);
 
-    // ? Student
+    // ? Teacher
     Route::get('admin/teacher/list', [TeacherController::class, 'list']);
     Route::get('admin/teacher/add', [TeacherController::class, 'add']);
     Route::post('admin/teacher/add', [TeacherController::class, 'PostAdd']);
@@ -110,6 +111,16 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/assign_subject/edit_single/{id}', [ClassSubjectController::class, 'updateSingle']);
     Route::post('admin/assign_subject/edit/{id}', [ClassSubjectController::class, 'PostEdit']);
     Route::get('admin/assign_subject/delete/{id}', [ClassSubjectController::class, 'delete']);
+
+    // ? Assign-Class-Teacher
+    Route::get('admin/assign_class_teacher/list', [AssignClassTeacherController::class, 'list']);
+    Route::get('admin/assign_class_teacher/add', [AssignClassTeacherController::class, 'add']);
+    Route::post('admin/assign_class_teacher/add', [AssignClassTeacherController::class, 'PostAdd']);
+    Route::get('admin/assign_class_teacher/edit/{id}', [AssignClassTeacherController::class, 'edit']);
+    Route::get('admin/assign_class_teacher/edit_single/{id}', [AssignClassTeacherController::class, 'editSingle']);
+    Route::post('admin/assign_class_teacher/edit_single/{id}', [AssignClassTeacherController::class, 'updateSingle']);
+    Route::post('admin/assign_class_teacher/edit/{id}', [AssignClassTeacherController::class, 'PostEdit']);
+    Route::get('admin/assign_class_teacher/delete/{id}', [AssignClassTeacherController::class, 'delete']);
 
     // ? Change Password
     Route::get('admin/change_password', [UserController::class, 'change_password']);
