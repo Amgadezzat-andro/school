@@ -18,7 +18,7 @@
                             <h1>Subject List Total : {{ $subjects->total() }} Subjects</h1>
                         </div>
                         <div class="col-sm-6" style="text-align: right;">
-                            <a href="{{ url('admin/subject/add') }}" class="btn btn-primary">Add New Subject</a>
+                            <a href="/admin/subject/add" class="btn btn-primary">Add New Subject</a>
                         </div>
 
                     </div>
@@ -74,7 +74,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <button class="btn btn-primary" type="submit" style="margin-top: 30px">Search</button>
-                                <a href="{{ url('admin/subject/list') }}" class="btn btn-success"
+                                <a href="/admin/subject/list" class="btn btn-success"
                                     style="margin-top: 30px">Clear</a>
 
                             </div>
@@ -132,9 +132,8 @@
                                     <td>{{ $subject->created_by }}</td>
                                     <td>{{ date('d-m-Y', strtotime($subject->created_at)) }}</td>
                                     <td>
-                                        <a href="{{ url('admin/subject/edit/' . $subject->id) }}"
-                                            class="btn btn-primary">Edit</a>
-                                        <a href="{{ url('admin/subject/delete/' . $subject->id) }}"
+                                        <a href="/admin/subject/edit/{{ $subject->id }}" class="btn btn-primary">Edit</a>
+                                        <a href="/admin/subject/delete/{{ $subject->id }}"
                                             class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
@@ -143,7 +142,7 @@
                     </table>
 
                     <div style="padding: 10px; float: right; ">
-                        {{ $subjects->appends(request()->query())->links() }}
+                        {{ $subjects->links() }}
                     </div>
                 </div>
                 <!-- /.card-body -->

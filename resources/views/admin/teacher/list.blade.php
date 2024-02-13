@@ -18,7 +18,7 @@
                             <h1>Teacher List Total : {{ $teachers->total() }} Teachers</h1>
                         </div>
                         <div class="col-sm-6" style="text-align: right;">
-                            <a href="{{ url('admin/teacher/add') }}" class="btn btn-primary">Add New Teacher</a>
+                            <a href="/admin/teacher/add" class="btn btn-primary">Add New Teacher</a>
                         </div>
 
                     </div>
@@ -104,8 +104,7 @@
                             </div>
                             <div class="form-group col-md-2">
                                 <button class="btn btn-primary" type="submit" style="margin-top: 30px">Search</button>
-                                <a href="{{ url('admin/teacher/list') }}" class="btn btn-success"
-                                    style="margin-top: 30px">Clear</a>
+                                <a href="/admin/teacher/list" class="btn btn-success" style="margin-top: 30px">Clear</a>
                             </div>
                         </div>
 
@@ -187,10 +186,8 @@
                                     </td>
                                     <td>{{ date('d-m-Y', strtotime($student->created_at)) }}</td>
                                     <td style="min-width: 180px">
-                                        <a href="{{ url('admin/teacher/edit/' . $student->id) }}"
-                                            class="btn btn-primary">Edit</a>
-                                        <a href="{{ url('admin/teacher/delete/' . $student->id) }}"
-                                            class="btn btn-danger">Delete</a>
+                                        <a href="/admin/teacher/edit/{{ $student->id }}" class="btn btn-primary">Edit</a>
+                                        <a href="/admin/teacher/delete/{{ $student->id }}"class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

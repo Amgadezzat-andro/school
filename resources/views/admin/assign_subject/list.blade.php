@@ -18,7 +18,7 @@
                             <h1>Assign Subject List Total : {{ $subjects->total() }} Subjects Assigned</h1>
                         </div>
                         <div class="col-sm-6" style="text-align: right;">
-                            <a href="{{ url('admin/assign_subject/add') }}" class="btn btn-primary">Assign Subject</a>
+                            <a href="/admin/assign_subject/add" class="btn btn-primary">Assign Subject</a>
                         </div>
 
                     </div>
@@ -71,7 +71,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <button class="btn btn-primary" type="submit" style="margin-top: 30px">Search</button>
-                                <a href="{{ url('admin/assign_subject/list') }}" class="btn btn-success"
+                                <a href="/admin/assign_subject/list" class="btn btn-success"
                                     style="margin-top: 30px">Clear</a>
 
                             </div>
@@ -109,7 +109,7 @@
                         <tbody>
                             @foreach ($subjects as $key => $subject)
                                 <tr>
-                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $key + 1 }}</td>
                                     <td>{{ $subject->subject_name }}</td>
                                     <td>{{ $subject->class_name }}</td>
                                     <td>{{ $subject->created_by }}</td>
@@ -123,12 +123,12 @@
                                     </td>
                                     <td>{{ date('d-m-Y', strtotime($subject->created_at)) }}</td>
                                     <td>
-                                        <a href="{{ url('admin/assign_subject/edit/' . $subject->id) }}"
+                                        <a href="/admin/assign_subject/edit/{{ $subject->id }}"
                                             class="btn btn-primary">Edit</a>
-                                        <a href="{{ url('admin/assign_subject/delete/' . $subject->id) }}"
+                                        <a href="/admin/assign_subject/delete/{{ $subject->id }}"
                                             class="btn btn-danger">Delete</a>
-                                            <a href="{{ url('admin/assign_subject/edit_single/' . $subject->id) }}"
-                                                class="btn btn-dark">Edit Single</a>
+                                        <a href="/admin/assign_subject/edit_single/{{ $subject->id }}"
+                                            class="btn btn-dark">Edit Single</a>
                                     </td>
                                 </tr>
                             @endforeach

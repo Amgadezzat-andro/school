@@ -15,7 +15,8 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Parent-Student List Of : <span class="text-success "> {{ $parent->name . " " . $parent->last_name }}</span></h1>
+                            <h1>Parent-Student List Of : <span class="text-success ">
+                                    {{ $parent->name . ' ' . $parent->last_name }}</span></h1>
                         </div>
                     </div>
                 </div>
@@ -55,7 +56,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <button class="btn btn-primary" type="submit" style="margin-top: 30px">Search</button>
-                                <a href="{{ url('admin/parent/my-student/' . $parent_id) }}" class="btn btn-success"
+                                <a href="/admin/parent/my-student/{{ $parent_id }}" class="btn btn-success"
                                     style="margin-top: 30px">Clear</a>
 
                             </div>
@@ -106,8 +107,8 @@
                                             @if (!empty($student->parent_name))
                                                 <span class="btn btn-success"> Added </span>
                                             @else
-                                            <a href="{{ url('admin/parent/assign_student_parent/' . $student->id . '/' . $parent_id) }}"
-                                                class="btn btn-primary">Add Student To Parent</a>
+                                                <a href="/admin/parent/assign_student_parent/ {{ $student->id . '/' . $parent_id }}"
+                                                    class="btn btn-primary">Add Student To Parent</a>
                                             @endif
 
                                         </td>
@@ -161,7 +162,7 @@
                                     <td>{{ $myStudent->parent_name }}</td>
                                     <td>{{ date('d-m-Y', strtotime($myStudent->created_at)) }}</td>
                                     <td style="min-width: 180px">
-                                        <a href="{{ url('admin/parent/assign_student_parent_delete/' . $myStudent->id . '/' . $parent_id) }}"
+                                        <a href="/admin/parent/assign_student_parent_delete/{{ $myStudent->id . '/' . $parent_id }}"
                                             class="btn btn-primary">Delete</a>
                                     </td>
                                 </tr>

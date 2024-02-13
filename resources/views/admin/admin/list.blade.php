@@ -18,7 +18,7 @@
                             <h1>Admin List Total : {{ $admins->total() }} Admins</h1>
                         </div>
                         <div class="col-sm-6" style="text-align: right;">
-                            <a href="{{ url('admin/admin/add') }}" class="btn btn-primary">Add New Admin</a>
+                            <a href="/admin/admin/add" class="btn btn-primary">Add New Admin</a>
                         </div>
 
                     </div>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <button class="btn btn-primary" type="submit" style="margin-top: 30px">Search</button>
-                                <a href="{{ url('admin/admin/list') }}" class="btn btn-success"
+                                <a href="/admin/admin/list" class="btn btn-success"
                                     style="margin-top: 30px">Clear</a>
 
                             </div>
@@ -95,9 +95,9 @@
                                     <td>{{ $admin->email }}</td>
                                     <td>{{ date('d-m-Y', strtotime($admin->created_at)) }}</td>
                                     <td>
-                                        <a href="{{ url('admin/admin/edit/' . $admin->id) }}"
+                                        <a href="/admin/admin/edit/{{ $admin->id}}"
                                             class="btn btn-primary">Edit</a>
-                                        <a href="{{ url('admin/admin/delete/' . $admin->id) }}"
+                                        <a href="/admin/admin/delete/{{$admin->id}}"
                                             class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>

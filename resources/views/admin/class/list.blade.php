@@ -18,7 +18,7 @@
                             <h1>Class List Total : {{ $classes->total() }} Classes</h1>
                         </div>
                         <div class="col-sm-6" style="text-align: right;">
-                            <a href="{{ url('admin/class/add') }}" class="btn btn-primary">Add New Class</a>
+                            <a href="/admin/class/add" class="btn btn-primary">Add New Class</a>
                         </div>
 
                     </div>
@@ -64,7 +64,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <button class="btn btn-primary" type="submit" style="margin-top: 30px">Search</button>
-                                <a href="{{ url('admin/class/list') }}" class="btn btn-success"
+                                <a href="/admin/class/list" class="btn btn-success"
                                     style="margin-top: 30px">Clear</a>
 
                             </div>
@@ -114,10 +114,8 @@
                                     <td>{{ $class->created_by }}</td>
                                     <td>{{ date('d-m-Y', strtotime($class->created_at)) }}</td>
                                     <td>
-                                        <a href="{{ url('admin/class/edit/' . $class->id) }}"
-                                            class="btn btn-primary">Edit</a>
-                                        <a href="{{ url('admin/class/delete/' . $class->id) }}"
-                                            class="btn btn-danger">Delete</a>
+                                        <a href="/admin/class/edit/ {{ $class->id }}" class="btn btn-primary">Edit</a>
+                                        <a href="/admin/class/delete/ {{ $class->id }}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

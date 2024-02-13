@@ -23,12 +23,12 @@ class AdminMiddleware
                 return $next($request);
             } else {
                 Auth::logout();
-                return redirect(url(''));
+                return redirect('/');
             }
 
         } else {
             Auth::logout();
-            return redirect(url(''));
+            return redirect('/');
         }
 
     }

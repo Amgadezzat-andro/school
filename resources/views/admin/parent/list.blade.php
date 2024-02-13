@@ -18,7 +18,7 @@
                             <h1>Parent List Total : {{ $parents->total() }} Parents</h1>
                         </div>
                         <div class="col-sm-6" style="text-align: right;">
-                            <a href="{{ url('admin/parent/add') }}" class="btn btn-primary">Add New Parent</a>
+                            <a href="/admin/parent/add" class="btn btn-primary">Add New Parent</a>
                         </div>
 
                     </div>
@@ -39,13 +39,14 @@
                         <div class="row">
                             <div class="form-group col-md-3">
                                 <label>First Name</label>
-                                <input type="text" class="form-control" name="name" placeholder="Enter Parent's First Name"
-                                    value="{{ old('name',Request::get('name'))  }}">
+                                <input type="text" class="form-control" name="name"
+                                    placeholder="Enter Parent's First Name" value="{{ old('name', Request::get('name')) }}">
                             </div>
                             <div class="form-group col-md-3">
                                 <label>Last Name</label>
-                                <input type="text" class="form-control" name="last_name" placeholder="Enter Parent's Last Name"
-                                    value="{{ old('name',Request::get('last_name'))  }}">
+                                <input type="text" class="form-control" name="last_name"
+                                    placeholder="Enter Parent's Last Name"
+                                    value="{{ old('name', Request::get('last_name')) }}">
                             </div>
                             <div class="form-group col-md-3">
                                 <label>Gender</label>
@@ -59,12 +60,14 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label>Occupation</label>
-                                <input type="text" class="form-control" name="occupation" placeholder="Enter Parent's Occupation"
+                                <input type="text" class="form-control" name="occupation"
+                                    placeholder="Enter Parent's Occupation"
                                     value="{{ old('occupation', Request::get('occupation')) }}">
                             </div>
                             <div class="form-group col-md-3">
                                 <label>Address</label>
-                                <input type="text" class="form-control" name="address" placeholder="Enter Parent's Address"
+                                <input type="text" class="form-control" name="address"
+                                    placeholder="Enter Parent's Address"
                                     value="{{ old('address', Request::get('address')) }}">
                             </div>
                             <div class="form-group col-md-3">
@@ -74,7 +77,8 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label>Mobile Number</label>
-                                <input type="text" class="form-control" name="mobile_number" placeholder="Enter Parent's Mobile Number"
+                                <input type="text" class="form-control" name="mobile_number"
+                                    placeholder="Enter Parent's Mobile Number"
                                     value="{{ old('mobile_number', Request::get('mobile_number')) }}">
                             </div>
                             <div class="form-group col-md-3">
@@ -94,8 +98,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <button class="btn btn-primary" type="submit" style="margin-top: 30px">Search</button>
-                                <a href="{{ url('admin/parent/list') }}" class="btn btn-success"
-                                    style="margin-top: 30px">Clear</a>
+                                <a href="/admin/parent/list" class="btn btn-success" style="margin-top: 30px">Clear</a>
 
                             </div>
                         </div>
@@ -164,11 +167,11 @@
                                     <td>{{ date('d-m-Y', strtotime($parent->created_at)) }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ url('admin/parent/edit/' . $parent->id) }}"
+                                            <a href="/admin/parent/edit/{{ $parent->id }}"
                                                 class="btn btn-primary mx-2 ">Edit</a>
-                                            <a href="{{ url('admin/parent/delete/' . $parent->id) }}"
+                                            <a href="/admin/parent/delete/{{ $parent->id }}"
                                                 class="btn btn-danger mx-2 ">Delete</a>
-                                            <a href="{{ url('admin/parent/my-student/' . $parent->id) }}"
+                                            <a href="/admin/parent/my-student/{{ $parent->id }}"
                                                 class="btn btn-dark mx-2 ">My Students</a>
                                         </div>
                                     </td>

@@ -21,7 +21,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="{{ url('public/dist/img/user1-128x128.jpg') }}" alt="User Avatar"
+                                <img src="/public/dist/img/user1-128x128.jpg" alt="User Avatar"
                                     class="img-size-50 mr-3 img-circle">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
@@ -38,7 +38,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="{{ url('public/dist/img/user8-128x128.jpg') }}" alt="User Avatar"
+                                <img src="/public/dist/img/user8-128x128.jpg" alt="User Avatar"
                                     class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
@@ -55,7 +55,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="{{ url('public/dist/img/user3-128x128.jpg') }}" alt="User Avatar"
+                                <img src="/public/dist/img/user3-128x128.jpg" alt="User Avatar"
                                     class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
@@ -128,7 +128,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ url('public/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                        <img src="/public/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
                             alt="User Image">
                     </div>
                     <div class="info">
@@ -145,7 +145,7 @@
                         {{-- Admin --}}
                         @if (Auth::user()->user_type == 1)
                             <li class="nav-item">
-                                <a href="{{ url('admin/dashboard') }}"
+                                <a href="/admin/dashboard"
                                     class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
@@ -154,7 +154,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/account') }}"
+                                <a href="/admin/account"
                                     class="nav-link @if (Request::segment(2) == 'account') active @endif">
                                     <i class="nav-icon fas fa-user-edit"></i>
                                     <p>
@@ -163,7 +163,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/admin/list') }}"
+                                <a href="/admin/admin/list"
                                     class="nav-link @if (Request::segment(2) == 'admin') active @endif">
                                     <i class="nav-icon far fa-user"></i>
                                     <p>
@@ -172,7 +172,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/teacher/list') }}"
+                                <a href="/admin/teacher/list"
                                     class="nav-link @if (Request::segment(2) == 'teacher') active @endif">
                                     <i class="nav-icon far fa-user"></i>
                                     <p>
@@ -181,7 +181,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/student/list') }}"
+                                <a href="/admin/student/list"
                                     class="nav-link @if (Request::segment(2) == 'student') active @endif">
                                     <i class="nav-icon far fa-user"></i>
                                     <p>
@@ -190,7 +190,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/parent/list') }}"
+                                <a href="/admin/parent/list"
                                     class="nav-link @if (Request::segment(2) == 'parent') active @endif">
                                     <i class="nav-icon far fa-user"></i>
                                     <p>
@@ -199,7 +199,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/class/list') }}"
+                                <a href="/admin/class/list"
                                     class="nav-link @if (Request::segment(2) == 'class') active @endif">
                                     <i class="nav-icon far fa-user"></i>
 
@@ -209,7 +209,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/subject/list') }}"
+                                <a href="/admin/subject/list"
                                     class="nav-link @if (Request::segment(2) == 'subject') active @endif">
                                     <i class="nav-icon far fa-user"></i>
                                     <p>
@@ -218,7 +218,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/assign_subject/list') }}"
+                                <a href="/admin/assign_subject/list"
                                     class="nav-link @if (Request::segment(2) == 'assign_subject') active @endif">
                                     <i class="nav-icon far fa-user"></i>
                                     <p>
@@ -227,7 +227,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/assign_class_teacher/list') }}"
+                                <a href="/admin/assign_class_teacher/list"
                                     class="nav-link @if (Request::segment(2) == 'assign_class_teacher') active @endif">
                                     <i class="nav-icon far fa-user"></i>
                                     <p>
@@ -236,7 +236,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/change_password') }}"
+                                <a href="/admin/change_password"
                                     class="nav-link @if (Request::segment(2) == 'change_password') active @endif">
                                     <i class="nav-icon fas fa-keyboard"></i>
                                     <p>
@@ -248,7 +248,7 @@
                             {{-- Teacher --}}
                         @elseif (Auth::user()->user_type == 2)
                             <li class="nav-item">
-                                <a href="{{ url('teacher/dashboard') }}"
+                                <a href="/teacher/dashboard"
                                     class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
@@ -257,7 +257,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('teacher/account') }}"
+                                <a href="/teacher/account"
                                     class="nav-link @if (Request::segment(2) == 'account') active @endif">
                                     <i class="nav-icon fas fa-user-edit"></i>
                                     <p>
@@ -266,7 +266,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('teacher/change_password') }}"
+                                <a href="/teacher/change_password"
                                     class="nav-link @if (Request::segment(2) == 'change_password') active @endif">
                                     <i class="nav-icon fas fa-keyboard"></i>
                                     <p>
@@ -278,7 +278,7 @@
                             {{-- Student --}}
                         @elseif (Auth::user()->user_type == 3)
                             <li class="nav-item">
-                                <a href="{{ url('student/dashboard') }}"
+                                <a href="/student/dashboard"
                                     class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
@@ -287,7 +287,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('student/my_subject') }}"
+                                <a href="/student/my_subject"
                                     class="nav-link @if (Request::segment(2) == 'my_subject') active @endif">
                                     <i class="nav-icon fas fa-book"></i>
                                     <p>
@@ -296,7 +296,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('student/account') }}"
+                                <a href="/student/account"
                                     class="nav-link @if (Request::segment(2) == 'account') active @endif">
                                     <i class="nav-icon fas fa-user-edit"></i>
                                     <p>
@@ -305,7 +305,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('student/change_password') }}"
+                                <a href="/student/change_password"
                                     class="nav-link @if (Request::segment(2) == 'change_password') active @endif">
                                     <i class="nav-icon fas fa-keyboard"></i>
                                     <p>
@@ -316,7 +316,7 @@
                             {{-- Parent --}}
                         @elseif (Auth::user()->user_type == 4)
                             <li class="nav-item">
-                                <a href="{{ url('parent/dashboard') }}"
+                                <a href="/parent/dashboard"
                                     class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
@@ -325,7 +325,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('parent/my_student') }}"
+                                <a href="/parent/my_student"
                                     class="nav-link @if (Request::segment(2) == 'my_student') active @endif">
                                     <i class="nav-icon fas fa-user-friends"></i>
                                     <p>
@@ -334,7 +334,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('parent/account') }}"
+                                <a href="/parent/account"
                                     class="nav-link @if (Request::segment(2) == 'account') active @endif">
                                     <i class="nav-icon fas fa-user-edit"></i>
                                     <p>
@@ -343,7 +343,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('parent/change_password') }}"
+                                <a href="/parent/change_password"
                                     class="nav-link @if (Request::segment(2) == 'change_password') active @endif">
                                     <i class="nav-icon fas fa-keyboard"></i>
                                     <p>
@@ -354,7 +354,7 @@
                         @endif
                         {{-- Common Links --}}
                         <li class="nav-item">
-                            <a href="{{ url('logout') }}" class="nav-link ">
+                            <a href="/logout" class="nav-link ">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>
                                     Logout

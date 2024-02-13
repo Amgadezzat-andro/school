@@ -18,7 +18,7 @@
                             <h1>Student List Total : {{ $students->total() }} Students</h1>
                         </div>
                         <div class="col-sm-6" style="text-align: right;">
-                            <a href="{{ url('admin/student/add') }}" class="btn btn-primary">Add New Student</a>
+                            <a href="/admin/student/add" class="btn btn-primary">Add New Student</a>
                         </div>
 
                     </div>
@@ -132,8 +132,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <button class="btn btn-primary" type="submit" style="margin-top: 30px">Search</button>
-                                <a href="{{ url('admin/student/list') }}" class="btn btn-success"
-                                    style="margin-top: 30px">Clear</a>
+                                <a href="/admin/student/list" class="btn btn-success" style="margin-top: 30px">Clear</a>
                             </div>
                         </div>
 
@@ -221,9 +220,9 @@
                                     <td>{{ $student->mobile_number }}</td>
                                     <td>{{ date('d-m-Y', strtotime($student->created_at)) }}</td>
                                     <td style="min-width: 180px">
-                                        <a href="{{ url('admin/student/edit/' . $student->id) }}"
+                                        <a href="/admin/student/edit/{{ $student->id }}"
                                             class="btn btn-primary">Edit</a>
-                                        <a href="{{ url('admin/student/delete/' . $student->id) }}"
+                                        <a href="/admin/student/delete/{{ $student->id }}"
                                             class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
