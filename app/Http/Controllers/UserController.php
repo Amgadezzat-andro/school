@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -191,4 +193,94 @@ class UserController extends Controller
         }
 
     }
+
+        // !!!! API !!!!!
+        public function index()
+        {
+            try {
+                $users = User::all();
+            } catch (Exception $e) {
+                return response()->json([
+                    'data' => [],
+                    'message'=>$e->getMessage()
+                ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+            }
+
+            return response()->json([
+                'data' => $users,
+                'message' => 'Succeed'
+            ], JsonResponse::HTTP_OK);
+        }
+
+        public function show($id)
+        {
+            try {
+                $user = User::find($id);
+            } catch (Exception $e) {
+                return response()->json([
+                    'data' => [],
+                    'message'=>$e->getMessage()
+                ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+            }
+
+            return response()->json([
+                'data' => $user,
+                'message' => 'Succeed'
+            ], JsonResponse::HTTP_OK);
+        }
+
+        public function store(Request $request)
+        {
+            try {
+                $posts = User::create($request->all());
+            } catch (Exception $e) {
+                return response()->json([
+                    'data' => [],
+                    'message'=>$e->getMessage()
+                ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+            }
+
+            return response()->json([
+                'data' => $posts,
+                'message' => 'Succeed'
+            ], JsonResponse::HTTP_OK);
+        }
+
+        public function updateUser(Request $request, $id)
+        {
+            try {
+                $posts = User::find($id)
+                            ->update($request->all());
+            } catch (Exception $e) {
+                return response()->json([
+                    'data' => [],
+                    'message'=>$e->getMessage()
+                ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+            }
+
+            return response()->json([
+                'data' => $posts,
+                'message' => 'Succeed'
+            ], JsonResponse::HTTP_OK);
+        }
+
+        public function destroyUser($id)
+        {
+            try {
+                $posts = User::destroy($id);
+            } catch (Exception $e) {
+                return response()->json([
+                    'data' => [],
+                    'message'=>$e->getMessage()
+                ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+            }
+
+            return response()->json([
+                'data' => $posts,
+                'message' => 'Succeed'
+            ], JsonResponse::HTTP_OK);
+        }
+
+
+        
 }
