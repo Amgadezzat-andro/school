@@ -136,5 +136,13 @@ class AssignClassTeacherController extends Controller
     }
 
 
+    // ** Teacher Side
+    public function MyClassSubject()
+    {
+        $data['classes'] = AssignClassTeacherModel::getMyClassSubject(Auth::user()->id);
+        return view('teacher.my_class_subject',$data);
+    }
+
+
 
 }

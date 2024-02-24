@@ -131,8 +131,10 @@ Route::group(['middleware' => 'admin'], function () {
 
 // ?? Teacher GROUP ??
 Route::group(['middleware' => 'teacher'], function () {
+
     // ? Show Dashboard
     Route::get('teacher/dashboard', [DashboardController::class, 'dashboard']);
+
     // ? Show Account
     Route::get('teacher/account', [UserController::class, 'myAccount']);
     Route::post('teacher/account', [UserController::class, 'UpdateMyAccount']);
@@ -141,10 +143,14 @@ Route::group(['middleware' => 'teacher'], function () {
     Route::get('teacher/change_password', [UserController::class, 'change_password']);
     Route::post('teacher/change_password', [UserController::class, 'update_change_password']);
 
+    // ? My Class Subject
+    Route::get('teacher/my_class_subject', [AssignClassTeacherController::class, 'MyClassSubject']);
+
 });
 
 // ?? Student GROUP ??
 Route::group(['middleware' => 'student'], function () {
+
     // ? Show Dashboard
     Route::get('student/dashboard', [DashboardController::class, 'dashboard']);
     // ? Show Account

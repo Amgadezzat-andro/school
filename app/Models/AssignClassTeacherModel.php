@@ -56,4 +56,22 @@ class AssignClassTeacherModel extends Model
     {
         return self::where('class_id', '=', $classID)->delete();
     }
+
+    public static function getMyClassSubject($teacherID){
+
+        return self::select('assign_class_teacher.*' , 'class.name as class_name' , 'subject.name as subject_name', 'subject.type as subject_type')
+        ->join('class', 'class.id', 'assign_class_teacher.class_id')
+        ->join('class_subject','class_subject.class_id','assign_class_teacher.class_id')
+        ->join('subject','subject.id','class_subject.subject_id')
+        ->where('assign_class_teacher.is_delete', '=', 0)
+        ->where('assign_class_teacher.status', '=', 1)
+        ->where('subject.is_delete', '=', 0)
+        ->where('subject.status', '=', 1)
+        ->where('class_subject.is_delete', '=', 0)
+        ->where('class_subject.status', '=', 1)
+        ->where('assign_class_teacher.teacher_id', '=', $teacherID)
+        ->orderBy('class.name')
+        ->get();
+
+    }
 }

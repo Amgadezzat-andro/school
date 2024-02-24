@@ -142,7 +142,7 @@
                         data-accordion="false">
 
 
-                        {{-- Admin --}}
+                        {{-- ??  Admin - Teacher - Studnet - Parent ?? --}}
                         @if (Auth::user()->user_type == 1)
                             <li class="nav-item">
                                 <a href="/admin/dashboard"
@@ -245,7 +245,7 @@
                                 </a>
                             </li>
 
-                            {{-- Teacher --}}
+                            {{-- ?? Teacher ?? --}}
                         @elseif (Auth::user()->user_type == 2)
                             <li class="nav-item">
                                 <a href="/teacher/dashboard"
@@ -274,8 +274,17 @@
                                     </p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="/teacher/my_class_subject"
+                                    class="nav-link @if (Request::segment(2) == 'my_class_subject') active @endif">
+                                    <i class="nav-icon fas fa-book-open"></i>
+                                    <p>
+                                        My Classes & Subjects
+                                    </p>
+                                </a>
+                            </li>
 
-                            {{-- Student --}}
+                            {{-- ?? Student ?? --}}
                         @elseif (Auth::user()->user_type == 3)
                             <li class="nav-item">
                                 <a href="/student/dashboard"
@@ -313,7 +322,7 @@
                                     </p>
                                 </a>
                             </li>
-                            {{-- Parent --}}
+                            {{-- ?? Parent ?? --}}
                         @elseif (Auth::user()->user_type == 4)
                             <li class="nav-item">
                                 <a href="/parent/dashboard"
@@ -352,7 +361,7 @@
                                 </a>
                             </li>
                         @endif
-                        {{-- Common Links --}}
+                        {{-- ?? Common Links ?? --}}
                         <li class="nav-item">
                             <a href="/logout" class="nav-link ">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>

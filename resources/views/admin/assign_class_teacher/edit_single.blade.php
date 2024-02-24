@@ -44,19 +44,18 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Teacher Name</label>
-                                        @foreach ($getTeacher as $index => $teacher)
-                                            <div>
-                                                <label style="font-weight: normal">
-                                                    <input type="checkbox" name="teacher_id" value="{{ $teacher->id }}"
-                                                    @if ($teacher->id == $assignedTeacher->teacher_id)
-                                                    checked
-                                                    @endif
-                                                    >
 
-                                                    {{ $teacher->name }}
-                                                </label>
-                                            </div>
-                                        @endforeach
+                                        <div>
+                                            <label style="font-weight: normal">
+                                                <select name="teacher_id" class="form-control">
+                                                    @foreach ($getTeacher as $index => $teacher)
+                                                        <option value="{{ $teacher->id }}"
+                                                            @if ($teacher->id == $assignedTeacher->teacher_id) selected @endif>
+                                                            {{ $teacher->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </label>
+                                        </div>
 
                                     </div>
                                     <div class="form-group">
