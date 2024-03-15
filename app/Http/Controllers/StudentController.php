@@ -161,4 +161,10 @@ class StudentController extends Controller
         return redirect('admin/student/list')->with('success', 'Student Successfully Deleted');
     }
 
+    // Teacher Side
+    public function MyStudent(){
+        $data['students'] = User::getTeacherStudents(Auth::user()->id);
+        return view('teacher.my_student', $data);
+    }
+
 }

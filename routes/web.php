@@ -146,6 +146,9 @@ Route::group(['middleware' => 'teacher'], function () {
     // ? My Class Subject
     Route::get('teacher/my_class_subject', [AssignClassTeacherController::class, 'MyClassSubject']);
 
+     // ? My Student
+     Route::get('teacher/my_student', [StudentController::class, 'MyStudent']);
+
 });
 
 // ?? Student GROUP ??

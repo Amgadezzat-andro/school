@@ -198,43 +198,68 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/admin/class/list"
-                                    class="nav-link @if (Request::segment(2) == 'class') active @endif">
-                                    <i class="nav-icon far fa-user"></i>
 
+                            <li class="nav-item @if (Request::segment(2) == 'class' ||
+                                    Request::segment(2) == 'subject' ||
+                                    Request::segment(2) == 'assign_subject' ||
+                                    Request::segment(2) == 'assign_class_teacher') menu-is-opening menu-open @endif ">
+                                <a href="#" class="nav-link @if (Request::segment(2) == 'class' ||
+                                        Request::segment(2) == 'subject' ||
+                                        Request::segment(2) == 'assign_subject' ||
+                                        Request::segment(2) == 'assign_class_teacher') ) active @endif ">
+                                    <i class="nav-icon fas fa-table"></i>
                                     <p>
-                                        Class
+                                        Academics
+                                        <i class="fas fa-angle-left right"></i>
                                     </p>
                                 </a>
+                                <ul class="nav nav-treeview">
+
+
+                                    <li class="nav-item">
+                                        <a href="/admin/class/list"
+                                            class="nav-link @if (Request::segment(2) == 'class') active @endif">
+                                            <i class="nav-icon far fa-user"></i>
+
+                                            <p>
+                                                Class
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/subject/list"
+                                            class="nav-link @if (Request::segment(2) == 'subject') active @endif">
+                                            <i class="nav-icon far fa-user"></i>
+                                            <p>
+                                                Subject
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/assign_subject/list"
+                                            class="nav-link @if (Request::segment(2) == 'assign_subject') active @endif">
+                                            <i class="nav-icon far fa-user"></i>
+                                            <p>
+                                                Assign Subject
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/assign_class_teacher/list"
+                                            class="nav-link @if (Request::segment(2) == 'assign_class_teacher') active @endif">
+                                            <i class="nav-icon far fa-user"></i>
+                                            <p>
+                                                Assign Teacher's Class
+                                            </p>
+                                        </a>
+                                    </li>
+
+
+                                </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="/admin/subject/list"
-                                    class="nav-link @if (Request::segment(2) == 'subject') active @endif">
-                                    <i class="nav-icon far fa-user"></i>
-                                    <p>
-                                        Subject
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/admin/assign_subject/list"
-                                    class="nav-link @if (Request::segment(2) == 'assign_subject') active @endif">
-                                    <i class="nav-icon far fa-user"></i>
-                                    <p>
-                                        Assign Subject
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/admin/assign_class_teacher/list"
-                                    class="nav-link @if (Request::segment(2) == 'assign_class_teacher') active @endif">
-                                    <i class="nav-icon far fa-user"></i>
-                                    <p>
-                                        Assign Teacher's Class
-                                    </p>
-                                </a>
-                            </li>
+
+
+
                             <li class="nav-item">
                                 <a href="/admin/change_password"
                                     class="nav-link @if (Request::segment(2) == 'change_password') active @endif">
@@ -280,6 +305,15 @@
                                     <i class="nav-icon fas fa-book-open"></i>
                                     <p>
                                         My Classes & Subjects
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/teacher/my_student"
+                                    class="nav-link @if (Request::segment(2) == 'my_student') active @endif">
+                                    <i class="nav-icon far fa-user-circle"></i>
+                                    <p>
+                                        My Students
                                     </p>
                                 </a>
                             </li>
