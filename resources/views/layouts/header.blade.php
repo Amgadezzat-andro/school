@@ -350,6 +350,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="/student/my_timetable"
+                                    class="nav-link @if (Request::segment(2) == 'my_timetable') active @endif">
+                                    <i class="nav-icon fas fa-table"></i>
+                                    <p>
+                                        My Timetable
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="/student/account"
                                     class="nav-link @if (Request::segment(2) == 'account') active @endif">
                                     <i class="nav-icon fas fa-user-edit"></i>
