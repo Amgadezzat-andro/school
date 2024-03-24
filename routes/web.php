@@ -154,9 +154,11 @@ Route::group(['middleware' => 'teacher'], function () {
 
     // ? My Class Subject
     Route::get('teacher/my_class_subject', [AssignClassTeacherController::class, 'MyClassSubject']);
+    // ? My Class Subject Timetable
+    Route::get('teacher/my_class_subject/class_timetable/{classID}/{subjectID}', [ClassTimeTableController::class, 'my_TimetableTeacher']);
 
-     // ? My Student
-     Route::get('teacher/my_student', [StudentController::class, 'MyStudent']);
+    // ? My Student
+    Route::get('teacher/my_student', [StudentController::class, 'MyStudent']);
 
 });
 

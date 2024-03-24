@@ -54,7 +54,10 @@
                                         @endif
                                     </td>
                                     <td>{{ date('d-m-Y', strtotime($class->created_at)) }}</td>
-                                    <td>X</td>
+                                    <td>
+                                        <a href="/teacher/my_class_subject/class_timetable/{{ $class->class_id }}/{{ $class->subject_id }}"
+                                            class="btn btn-primary">My Class Timetable</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -86,7 +86,7 @@
                                     <td>{{ date('d-m-Y', strtotime($student->created_at)) }}</td>
                                     <td>
                                         <a class="btn btn-dark"
-                                            href="parent/my_student/subject/{{$student->id}}">Subjects</a>
+                                            href="/parent/my_student/subject/{{$student->id}}">Subjects</a>
                                     </td>
                                 </tr>
                             @endforeach
