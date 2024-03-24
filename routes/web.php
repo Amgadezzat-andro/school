@@ -5,6 +5,7 @@ use App\Http\Controllers\AssignClassTeacherController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ClassSubjectController;
+use App\Http\Controllers\ClassTimeTableController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\StudentController;
@@ -122,9 +123,17 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/assign_class_teacher/edit/{id}', [AssignClassTeacherController::class, 'PostEdit']);
     Route::get('admin/assign_class_teacher/delete/{id}', [AssignClassTeacherController::class, 'delete']);
 
+    // ? Class Timetable
+    Route::get('admin/class_timetable/list', [ClassTimeTableController::class, 'list']);
+    Route::post('admin/class_timetable/get_subject', [ClassTimeTableController::class, 'get_subject']);
+    Route::post('admin/class_timetable/add', [ClassTimeTableController::class, 'insert_update']);
+
+
+
     // ? Change Password
     Route::get('admin/change_password', [UserController::class, 'change_password']);
     Route::post('admin/change_password', [UserController::class, 'update_change_password']);
+
 
 
 });

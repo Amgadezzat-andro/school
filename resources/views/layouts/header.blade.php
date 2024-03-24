@@ -202,11 +202,13 @@
                             <li class="nav-item @if (Request::segment(2) == 'class' ||
                                     Request::segment(2) == 'subject' ||
                                     Request::segment(2) == 'assign_subject' ||
-                                    Request::segment(2) == 'assign_class_teacher') menu-is-opening menu-open @endif ">
+                                    Request::segment(2) == 'assign_class_teacher' ||
+                                    Request::segment(2) == 'class_timetable') menu-is-opening menu-open @endif ">
                                 <a href="#" class="nav-link @if (Request::segment(2) == 'class' ||
                                         Request::segment(2) == 'subject' ||
                                         Request::segment(2) == 'assign_subject' ||
-                                        Request::segment(2) == 'assign_class_teacher') ) active @endif ">
+                                        Request::segment(2) == 'assign_class_teacher' ||
+                                        Request::segment(2) == 'class_timetable') ) active @endif ">
                                     <i class="nav-icon fas fa-table"></i>
                                     <p>
                                         Academics
@@ -241,6 +243,15 @@
                                             <i class="nav-icon far fa-user"></i>
                                             <p>
                                                 Assign Subject
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/class_timetable/list"
+                                            class="nav-link @if (Request::segment(2) == 'class_timetable') active @endif">
+                                            <i class="nav-icon far fa-user"></i>
+                                            <p>
+                                                Class Timetable
                                             </p>
                                         </a>
                                     </li>

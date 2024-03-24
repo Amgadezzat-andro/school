@@ -25,7 +25,7 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="/public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="/public/plugins/daterangepicker/daterangepicker.css'">
+    <link rel="stylesheet" href="/public/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/public/plugins/summernote/summernote-bs4.min.css">
     @yield('style')
